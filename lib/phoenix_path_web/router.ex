@@ -2,7 +2,7 @@ defmodule PhoenixPathWeb.Router do
   use PhoenixPathWeb, :router
 
   pipeline :browser do
-    plug :accepts, ["html"]
+    plug :accepts, ["html", "text"]
     plug :fetch_session
     plug :fetch_live_flash
     plug :put_root_layout, {PhoenixPathWeb.LayoutView, :root}
@@ -21,6 +21,7 @@ defmodule PhoenixPathWeb.Router do
     get "/", PageController, :index
     get "/hello", HelloController, :index
     get "/hello/:messenger", HelloController, :show
+    get "/redirect_test", PageController, :redirect_test
 
     resources "/users", UserController do
       resources "/posts", PostController
