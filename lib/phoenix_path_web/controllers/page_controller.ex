@@ -11,4 +11,16 @@ defmodule PhoenixPathWeb.PageController do
   def redirect_test(conn, _params) do
     render(conn, "index.html")
   end
+
+  def show_json_one(conn, _params) do
+    page = %{title: "foo"}
+
+    render(conn, "show.json", page: page)
+  end
+
+  def show_json_many(conn, _params) do
+    pages = [%{title: "foo"}, %{title: "bar"}]
+
+    render(conn, "index.json", pages: pages)
+  end
 end
