@@ -15,7 +15,8 @@ defmodule PhoenixPath.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: PhoenixPath.PubSub},
       # Start the Endpoint (http/https)
-      PhoenixPathWeb.Endpoint
+      PhoenixPathWeb.Endpoint,
+      PhoenixPathWeb.Presence
       # Start a worker by calling: PhoenixPath.Worker.start_link(arg)
       # {PhoenixPath.Worker, arg}
     ]
