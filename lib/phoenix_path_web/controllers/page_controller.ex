@@ -23,4 +23,8 @@ defmodule PhoenixPathWeb.PageController do
 
     render(conn, "index.json", pages: pages)
   end
+
+  def test(conn, _params) do
+    render(conn, "test.html")
+  end
 end

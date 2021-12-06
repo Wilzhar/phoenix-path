@@ -24,6 +24,7 @@ defmodule PhoenixPathWeb.Router do
     get "/hello", HelloController, :index
     get "/hello/:messenger", HelloController, :show
     get "/redirect_test", PageController, :redirect_test
+    get "/test", PageController, :test
 
     resources "/users", UserController do
       resources "/posts", PostController
