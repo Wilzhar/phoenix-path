@@ -26,31 +26,7 @@ defmodule PhoenixPathWeb.Router do
     get "/redirect_test", PageController, :redirect_test
     get "/test", PageController, :test
 
-    resources "/users", UserController do
-      resources "/posts", PostController
-    end
-
-    resources "/posts", PostController, only: [:index, :show]
-    resources "/comments", CommentController, except: [:delete]
-    resources "/reviews", ReviewController
-  end
-
-  scope "/admin", PhoenixPathWeb.Admin, as: :admin do
-    pipe_through :browser
-
-    resources "/images", ImageController
-    resources "/reviews", ReviewController
-    resources "/users", UserController
-  end
-
-  scope "/api", PhoenixPathWeb.Api, as: :api do
-    pipe_through :api
-
-    scope "/v1", V1, as: :v1 do
-      resources "/images", ImageController
-      resources "/reviews", ReviewController
-      resources "/users", UserController
-    end
+    resources "/products", ProductController
   end
 
   # Other scopes may use custom stacks.
