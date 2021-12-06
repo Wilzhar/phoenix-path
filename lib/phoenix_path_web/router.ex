@@ -8,6 +8,7 @@ defmodule PhoenixPathWeb.Router do
     plug :put_root_layout, {PhoenixPathWeb.LayoutView, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug PhoenixPathWeb.Plugs.Locale, "en"
   end
 
   pipeline :api do
@@ -20,6 +21,32 @@ defmodule PhoenixPathWeb.Router do
     get "/", PageController, :index
     get "/hello", HelloController, :index
     get "/hello/:messenger", HelloController, :show
+
+    resources "/users", UserController do
+      resources "/posts", PostController
+    end
+
+    resources "/posts", PostController, only: [:index, :show]
+    resources "/comments", CommentController, except: [:delete]
+    resources "/reviews", ReviewController
+  end
+
+  scope "/admin", PhoenixPathWeb.Admin, as: :admin do
+    pipe_through :browser
+
+    resources "/images", ImageController
+    resources "/reviews", ReviewController
+    resources "/users", UserController
+  end
+
+  scope "/api", PhoenixPathWeb.Api, as: :api do
+    pipe_through :api
+
+    scope "/v1", V1, as: :v1 do
+      resources "/images", ImageController
+      resources "/reviews", ReviewController
+      resources "/users", UserController
+    end
   end
 
   # Other scopes may use custom stacks.
