@@ -5,7 +5,8 @@ defmodule PhoenixPathWeb.PageController do
     conn
     |> put_flash(:info, "Welcome to Phoenix, from flash info!")
     |> put_flash(:error, "Let's pretend we have an error.")
-    |> redirect(to: Routes.page_path(conn, :redirect_test))
+    # |> redirect(to: Routes.page_path(conn, :redirect_test))
+    |> render("index.html")
   end
 
   def redirect_test(conn, _params) do
