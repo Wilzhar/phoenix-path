@@ -19,6 +19,8 @@ defmodule PhoenixPathWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    get "/json/many", PageController, :show_json_many
+    get "/json/one", PageController, :show_json_one
     get "/hello", HelloController, :index
     get "/hello/:messenger", HelloController, :show
     get "/redirect_test", PageController, :redirect_test
