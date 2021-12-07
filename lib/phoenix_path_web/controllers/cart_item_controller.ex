@@ -1,7 +1,7 @@
 defmodule PhoenixPathWeb.CartItemController do
   use PhoenixPathWeb, :controller
 
-  alias Hello.{ShoppingCart, Catalog}
+  alias PhoenixPath.{ShoppingCart, Catalog}
 
   def create(conn, %{"product_id" => product_id}) do
     product = Catalog.get_product!(product_id)
