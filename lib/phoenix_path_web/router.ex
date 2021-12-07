@@ -30,7 +30,7 @@ defmodule PhoenixPathWeb.Router do
     get "/test", PageController, :test
 
     resources "/products", ProductController
-
+    resources "/orders", OrderController, only: [:create, :show]
     resources "/cart_items", CartItemController, only: [:create, :delete]
 
     get "/cart", CartController, :show
