@@ -8,7 +8,7 @@ defmodule PhoenixPath.ShoppingCartFixtures do
   Generate a unique cart user_uuid.
   """
   def unique_cart_user_uuid do
-    raise "implement the logic to generate a unique cart user_uuid"
+    Ecto.UUID.generate()
   end
 
   @doc """
@@ -32,7 +32,7 @@ defmodule PhoenixPath.ShoppingCartFixtures do
     {:ok, cart_item} =
       attrs
       |> Enum.into(%{
-        price_when_carted: "120.5",
+        price_when_carted: "120.500000",
         quantity: 42
       })
       |> PhoenixPath.ShoppingCart.create_cart_item()
