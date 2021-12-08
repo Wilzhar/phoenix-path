@@ -7,7 +7,7 @@ import Config
 # Run `mix help test` for more information.
 config :phoenix_path, PhoenixPath.Repo,
   username: "postgres",
-  password: "postgres",
+  password: "punch-ambiguous-thrive",
   database: "phoenix_path_test#{System.get_env("MIX_TEST_PARTITION")}",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox,
