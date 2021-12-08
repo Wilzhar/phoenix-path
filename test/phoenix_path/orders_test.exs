@@ -9,6 +9,7 @@ defmodule PhoenixPath.OrdersTest do
     import PhoenixPath.OrdersFixtures
 
     @invalid_attrs %{total_price: nil, user_uuid: nil}
+    @user_uuid "7488a646-e31f-11e4-aace-60030896066"
 
     test "list_orders/0 returns all orders" do
       order = order_fixture()
@@ -17,7 +18,7 @@ defmodule PhoenixPath.OrdersTest do
 
     test "get_order!/1 returns the order with given id" do
       order = order_fixture()
-      assert Orders.get_order!(order.id) == order
+      assert Orders.get_order!(@user_uuid, order.id) == order
     end
 
     test "create_order/1 with valid data creates a order" do
@@ -44,13 +45,13 @@ defmodule PhoenixPath.OrdersTest do
     test "update_order/2 with invalid data returns error changeset" do
       order = order_fixture()
       assert {:error, %Ecto.Changeset{}} = Orders.update_order(order, @invalid_attrs)
-      assert order == Orders.get_order!(order.id)
+      assert order == Orders.get_order!(@user_uuid, order.id)
     end
 
     test "delete_order/1 deletes the order" do
       order = order_fixture()
       assert {:ok, %Order{}} = Orders.delete_order(order)
-      assert_raise Ecto.NoResultsError, fn -> Orders.get_order!(order.id) end
+      assert_raise Ecto.NoResultsError, fn -> Orders.get_order!(@user_uuid, order.id) end
     end
 
     test "change_order/1 returns a order changeset" do
