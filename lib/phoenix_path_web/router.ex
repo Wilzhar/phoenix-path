@@ -38,9 +38,10 @@ defmodule PhoenixPathWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", PhoenixPathWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", PhoenixPathWeb do
+    pipe_through :api
+    resources "/articles", ArticleController, except: [:new, :edit]
+  end
 
   # Enables LiveDashboard only for development
   #
